@@ -1,10 +1,13 @@
 from pydantic_settings import BaseSettings
 
+
 class Settings(BaseSettings):
-    APP_NAME: str = "ANS Backend"
     DATABASE_URL: str
+    DEBUG: bool = False
 
     class Config:
         env_file = ".env"
+        extra = "ignore"  # ignora qualquer variável extra
+
 
 settings = Settings()
