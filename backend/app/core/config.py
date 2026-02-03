@@ -2,12 +2,21 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
+    """
+    Configurações globais da aplicação.
+    Carregadas via variáveis de ambiente.
+    """
+
+    APP_NAME: str = "ANS Backend"
+    ENV: str = "development"
+
     DATABASE_URL: str
-    DEBUG: bool = False
+
+    ETL_AUTO_RUN: bool = True
 
     class Config:
         env_file = ".env"
-        extra = "ignore"  # ignora qualquer variável extra
+        case_sensitive = True
 
 
 settings = Settings()
